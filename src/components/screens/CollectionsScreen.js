@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string'
 
-import { useCard } from "../../hooks/userCard";
+import { useCard } from "../../hooks/useCard";
 import { useForm } from '../../hooks/useForm';
 
 import { CardOnList } from "../common/card/CardOnList";
