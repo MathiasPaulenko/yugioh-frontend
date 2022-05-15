@@ -1,47 +1,89 @@
-import { useCollectionCards } from "../../hooks/userCollectionCards";
-import { CardOnList } from "../common/CardOnList";
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string'
+
+import { useCard } from "../../hooks/userCard";
+import { useForm } from '../../hooks/useForm';
+
+import { CardOnList } from "../common/card/CardOnList";
 import { Title } from "../common/Title";
+import { Loading } from "../common/Loading";
 import { BASE_URL } from '../../helpers/constants.js';
+import { SearchCard } from '../common/search/SearchCard';
+
 
 export const CollectionsScreen = () => {
 
-  const { loading, data } = useCollectionCards(`${BASE_URL}collection/card/?limit=100`);
-  const card_data = !!data && data.data;
+    const location = useLocation();
 
-  return (
-    <>
-      <Title value='List of Cards'></Title>
+    const { q = '' } = queryString.parse(location.search);
 
-      {
-        loading
-          ?
-          (
-            <div className="alert alert-info text-center">
-              Loading...
+    const [formValues, handleInputChange, reset] = useForm({
+        searchText: q,
+    });
+
+    const { loading, data } = useCard(`${BASE_URL}collection/card/?name=${q}`);
+
+    const card_data = !!data && data.data;
+
+
+    return (
+        <>
+            <div className='row mt-3 align-items-center'>
+                <Title value='List of Cards'></Title>
             </div>
-          )
-          :
-          (
-            <div className="row mt-5">
 
-              {
-                card_data.map((card, index) => {
-                  return < CardOnList
-                    key={index}
-                    name={card.seril_code}
-                    image={card.img_code}
-                    card_name={card.name}
-                    serial_code={card.serial_code}
-                  >
-                    
-                  </CardOnList>
-                })
-              }
+            <SearchCard
+                value={formValues}
+                handle={handleInputChange}
+                reset={reset}
+            />
 
-            </div>
-          )
-      }
+            {
+                loading
+                    ?
+                    (
+                        <Loading></Loading >
+                    )
+                    :
+                    (
+                        <div className="row mt-3 animate__animated animate__fadeIn">
 
-    </>
-  )
+                            {
+                                (() => {
+                                    if (q === '') {
+                                        card_data.map((card, index) => {
+                                            return <CardOnList
+                                                key={index}
+                                                name={card.serial_code}
+                                                image={card.img_code}
+                                                card_name={card.name}
+                                                serial_code={card.serial_code}
+                                            >
+                                            </CardOnList>
+                                        });
+
+                                    } else {
+                                        return (card_data.length === 0) && <div className="alert alert-danger">No concurrency found: {q} </div>
+                                    };
+                                })()
+                            }
+
+                            {
+                                card_data.map(card => (
+                                    <CardOnList
+                                        key={card.serial_code}
+                                        name={card.serial_code}
+                                        image={card.img_code}
+                                        card_name={card.name}
+                                        serial_code={card.serial_code}
+                                    />
+                                ))
+                            }
+
+                        </div>
+                    )
+            }
+
+        </>
+    )
 }
