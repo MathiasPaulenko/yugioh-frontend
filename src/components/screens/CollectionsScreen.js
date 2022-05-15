@@ -17,7 +17,7 @@ export const CollectionsScreen = () => {
 
     const { q = '' } = queryString.parse(location.search);
 
-    const [formValues, handleInputChange, reset] = useForm({
+    const [formValues, handleInputChange] = useForm({
         searchText: q,
     });
 
@@ -35,7 +35,6 @@ export const CollectionsScreen = () => {
             <SearchCard
                 value={formValues}
                 handle={handleInputChange}
-                reset={reset}
             />
 
             {

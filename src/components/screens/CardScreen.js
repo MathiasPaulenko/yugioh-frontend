@@ -34,9 +34,9 @@ export const CardScreen = () => {
                                     <ReturnButton value="Return" />
                                 </div>
                             </div>
+
                             <CardDetail card={card_data} />
-
-
+                            
                         </>
                     )
             }

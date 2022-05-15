@@ -7,7 +7,7 @@ import { SpellTrapCardDetail } from './SpellTrapCardDetail.js';
 import { PendulumCardDetail } from './PendulumCardDetail.js';
 import { LinkCardDetail } from './LinkCardDetail.js';
 import { MonsterCardDetail } from './MonsterCardDetail.js';
-import { IncDescCard } from './IncDescCard.js';
+import { ConstrolsButtonsCardDetail } from './ControlsDetails.js';
 
 import "../../../statics/css/main.css";
 
@@ -48,7 +48,7 @@ export const CardDetail = ({ card }) => {
 
             <CardDescriptionDetail description={description} />
 
-            <IncDescCard serial_code={serial_code} />
+            <ConstrolsButtonsCardDetail serial_code={serial_code} />
 
         </>
     )

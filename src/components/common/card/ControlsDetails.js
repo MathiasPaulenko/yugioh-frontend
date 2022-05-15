@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button, Modal } from 'react-bootstrap';
 
 import { BASE_URL } from '../../../helpers/constants.js';
 
 import "../../../statics/css/main.css";
 
 
-export const IncDescCard = ({ serial_code }) => {
+export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
+    const navigate = useNavigate();
+    const [state, setState] = useState('start')
+    const [show, setShow] = useState(false);
 
     const handleIncrease = () => {
         fetch(`${BASE_URL}collection/increase/${serial_code}/`).then(window.location.reload());
@@ -14,6 +19,19 @@ export const IncDescCard = ({ serial_code }) => {
     const handleDecrease = () => {
         fetch(`${BASE_URL}collection/decrease/${serial_code}/`).then(window.location.reload());
     };
+
+    const deleteCard = () => {
+        fetch(`${BASE_URL}collection/card/${serial_code}/`, { method: 'DELETE' })
+            .then(
+                setTimeout(function () {
+                    navigate('/')
+                }, 1000)
+            );
+
+    }
+    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <>
@@ -35,6 +53,8 @@ export const IncDescCard = ({ serial_code }) => {
                             <button
                                 type="button"
                                 className="btn btn-danger m-2"
+                                onClick={handleShow}
+
                             >
                                 Delete
                             </button>
@@ -58,6 +78,21 @@ export const IncDescCard = ({ serial_code }) => {
                     </div>
                 </div>
             </div>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>¡You are about to remove a card!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to continue?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="btn btn-secondary" onClick={deleteCard}>
+                        Yes
+                    </Button>
+                    <Button variant="btn btn-outline-secondary" onClick={handleClose}>
+                        No
+                    </Button>
+                </Modal.Footer>
+            </Modal>
 
         </>
     )

@@ -4,16 +4,19 @@ import { useNavigate } from 'react-router-dom';
 export const SearchCard = ({
     value,
     handle,
-    reset
 }) => {
 
     const navigate = useNavigate();
     const { searchText } = value;
+   
     const handleSearch = (e) => {
         e.preventDefault();
         navigate(`?q=${searchText}`);
     };
 
+    const handleReset = () => {
+        navigate('/');
+    };
 
     return (
         <form onSubmit={handleSearch} className="mt-3">
@@ -41,7 +44,7 @@ export const SearchCard = ({
                     <button
                         className="btn btn-secondary form-control"
                         type="reset"
-                        onClick={reset}
+                        onClick={handleReset}
                     >
                         Reset
                     </button>
