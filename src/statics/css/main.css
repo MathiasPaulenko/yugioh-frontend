@@ -1,0 +1,45 @@
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    margin: auto;
+    margin-top: 100px;
+    width: 50px;
+    height: 50px;
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #383636;
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+}
+
+.new-line {
+    white-space: pre-line;
+}
+
+.align-right {
+    text-align: right !important;
+}
+
+.type-icon-15 img {
+    width: 15%;
+}
+
+.type-icon-10 img {
+    width: 12%;
+}
+
+.card_button {
+    min-width: 120px !important;
+    max-width: 120px !important;
+}
+
+.shadow-black {
+    box-shadow: 0 .3rem 1rem rgba(0,0,0,.60)!important;
+}
