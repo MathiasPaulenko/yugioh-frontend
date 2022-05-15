@@ -20,24 +20,22 @@ export const CardScreen = () => {
                 loading
                     ?
                     (
-                        <Loading></Loading>
+                        <Loading />
                     )
                     :
                     (
                         <>
                             <div className='row mt-3 align-items-center'>
                                 <div className="col-sm-8">
-                                    <Title value={card_data.name}></Title>
+                                    <Title value={card_data.name} />
 
                                 </div>
                                 <div className="col-sm-4">
-                                    <ReturnButton value="Return"></ReturnButton>
+                                    <ReturnButton value="Return" />
                                 </div>
                             </div>
-                            <CardDetail
-                                card={card_data}
-                            >
-                            </CardDetail>
+                            <CardDetail card={card_data} />
+                            
 
                         </>
                     )

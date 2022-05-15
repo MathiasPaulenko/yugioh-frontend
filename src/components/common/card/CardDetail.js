@@ -46,9 +46,9 @@ export const CardDetail = ({ card }) => {
                 })()
             }
 
-            <CardDescriptionDetail description={description}></CardDescriptionDetail>
+            <CardDescriptionDetail description={description} />
 
-            <IncDescCard serial_code={ serial_code }></IncDescCard>
+            <IncDescCard serial_code={serial_code} />
 
         </>
     )

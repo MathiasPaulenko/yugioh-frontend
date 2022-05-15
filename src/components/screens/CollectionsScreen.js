@@ -29,7 +29,7 @@ export const CollectionsScreen = () => {
     return (
         <>
             <div className='row mt-3 align-items-center'>
-                <Title value='List of Cards'></Title>
+                <Title value='List of Cards' />
             </div>
 
             <SearchCard
@@ -42,7 +42,7 @@ export const CollectionsScreen = () => {
                 loading
                     ?
                     (
-                        <Loading></Loading >
+                        <Loading />
                     )
                     :
                     (
@@ -58,8 +58,8 @@ export const CollectionsScreen = () => {
                                                 image={card.img_code}
                                                 card_name={card.name}
                                                 serial_code={card.serial_code}
-                                            >
-                                            </CardOnList>
+                                            />
+                                            
                                         });
 
                                     } else {
