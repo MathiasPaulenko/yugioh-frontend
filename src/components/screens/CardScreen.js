@@ -13,7 +13,7 @@ export const CardScreen = () => {
     const { loading, data } = useCard(`${BASE_URL}collection/card/${serial_code}/`);
     const card_data = !!data && data;
 
-  
+
     return (
         <>
             {
@@ -35,7 +35,7 @@ export const CardScreen = () => {
                                 </div>
                             </div>
                             <CardDetail card={card_data} />
-                            
+
 
                         </>
                     )
