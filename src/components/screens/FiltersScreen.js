@@ -1,4 +1,4 @@
-import { useLocation, useNavigate  } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string'
 
 import { useFilterCard } from '../../hooks/useFilterCard';
@@ -7,6 +7,7 @@ import { InputField, SelectField } from "../common/search/InputField"
 import { Title } from "../common/Title"
 import { Loading } from "../common/Loading";
 import { BASE_URL } from '../../helpers/constants.js';
+import { ReturnButton } from '../common/ReturnButton';
 
 export const FiltersScreen = () => {
     const navigate = useNavigate();
@@ -29,14 +30,21 @@ export const FiltersScreen = () => {
 
     return (
         <>
-            <div className='row mt-3 align-items-center'>
-                <Title value='Filters' />
+
+            <div className='row mt-3 align-items-center mb-3'>
+                <div className='col-sm-8'>
+                    <Title value='Filters' />
+                </div>
+                <div className="col-sm-4">
+                    <ReturnButton value="Return" />
+                </div>
             </div>
+
             <form className="">
                 <div className="row ">
                     <InputField type="number" info="Amount" autoComplete="off" />
                     <SelectField path="info/card_races" name="Race" />
-                    <InputField type="text" info="Attirbute" />
+                    <SelectField path="info/attribute/" name="Attribute" />
                     <InputField type="text" info="Description" />
                     <InputField type="number" info="Level" autoComplete="off" />
                     <SelectField path="info/types/" name="Type" />
@@ -92,7 +100,7 @@ export const FiltersScreen = () => {
                                         });
 
                                     } else {
-                                        return (card_data.length === 0) && <div className="alert alert-danger">No concurrency found. </div>
+                                        return (card_data.length === 0) && <div className="alert alert-danger">No concurrency found.</div>
                                     };
                                 })()
                             }
