@@ -19,7 +19,7 @@ export const SearchCard = ({
     };
 
     return (
-        <form onSubmit={handleSearch} className="mt-3">
+        <form onSubmit={handleSearch} className="mt-3 animate__animated animate__fadeIn">
             <div className="row">
                 <div className="col-sm-8">
                     <input
@@ -42,7 +42,7 @@ export const SearchCard = ({
                 </div>
                 <div className="col-sm-2">
                     <button
-                        className="btn btn-secondary form-control"
+                        className="btn btn-outline-secondary form-control"
                         type="reset"
                         onClick={handleReset}
                     >

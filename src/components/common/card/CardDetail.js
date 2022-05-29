@@ -10,6 +10,7 @@ import { MonsterCardDetail } from './MonsterCardDetail.js';
 import { ConstrolsButtonsCardDetail } from './ControlsDetails.js';
 
 import "../../../statics/css/main.css";
+import { RelatedCards } from './RelatedCards.js';
 
 
 export const CardDetail = ({ card }) => {
@@ -23,6 +24,7 @@ export const CardDetail = ({ card }) => {
         description,
         type,
         subtype,
+        archetype="",
     } = card;
 
     return (
@@ -49,6 +51,22 @@ export const CardDetail = ({ card }) => {
             <CardDescriptionDetail description={description} />
 
             <ConstrolsButtonsCardDetail serial_code={serial_code} />
+
+            {
+                (() => {
+                    if(archetype && (archetype !== "")){
+                        return <RelatedCards archetype={archetype} />
+
+                    } else if(type && (type !== "")){
+                  
+                        return <RelatedCards cardType={type} cardSubtype={subtype} title='Card of the same type in the collection' />
+
+                    }else {
+                        return <div></div>
+                    }
+
+                })()
+            }
 
         </>
     )

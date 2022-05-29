@@ -66,7 +66,7 @@ export const MonsterCardDetail = ({ card }) => {
                                 <div className='row align-items-center text-center'>
                                     <div className='col-sm-4'>
                                         <span className='m-2'><strong>Type:</strong></span>
-                                        <span className='m-2 type-icon-15'><img className="" src={imgSubtype} alt='subtype'></img></span><br/>
+                                        <span className='m-2 type-icon-15'><img className="" src={imgSubtype} alt='subtype'></img></span><br />
                                         <span className='m-2'>{subtype}</span>
                                     </div>
                                     <div className='col-sm-4'>
@@ -120,10 +120,16 @@ export const MonsterCardDetail = ({ card }) => {
 
                                         }                                        <span className='m-2'>{rarity}</span>
                                     </div>
-                                    <div className='col-sm-4'>
-                                        <span className='m-2'><strong>Set Name:</strong></span><br />
-                                        <span className='m-2'>{set_name}</span>
-                                    </div>
+                                    {
+                                        (set_name !== "")
+                                        &&
+                                        (<div className='col-sm-4'>
+                                            <span className='m-2'><strong>Set Name:</strong></span><br />
+                                            <span className='m-2'>{set_name}</span>
+                                        </div>)
+                                    }
+
+
                                     <div className='col-sm-4'>
                                         {
                                             (() => {

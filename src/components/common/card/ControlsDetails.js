@@ -9,7 +9,6 @@ import "../../../statics/css/main.css";
 
 export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
     const navigate = useNavigate();
-    const [state, setState] = useState('start')
     const [show, setShow] = useState(false);
 
     const handleIncrease = () => {
@@ -25,11 +24,15 @@ export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
             .then(
                 setTimeout(function () {
                     navigate('/')
-                }, 1000)
+                }, 500)
             );
 
     }
     
+    const handleUpdate = () => {
+        navigate(`/card/update/${serial_code}`);
+    };
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -45,6 +48,8 @@ export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
                             <button
                                 type="button"
                                 className="btn btn-secondary m-2"
+                                onClick={handleUpdate}
+
                             >
                                 Update
                             </button>
@@ -62,14 +67,14 @@ export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
                         <div className='col-sm-10 align-right'>
                             <button
                                 type="button"
-                                className="btn btn-outline-secondary card_button m-2"
+                                className="btn btn btn-warning card_button m-2"
                                 onClick={handleDecrease}
                             >
                                 Decrease
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-outline-secondary card_button m-2"
+                                className="btn btn-success card_button m-2"
                                 onClick={handleIncrease}
                             >
                                 Increase
@@ -85,7 +90,7 @@ export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
                 </Modal.Header>
                 <Modal.Body>Are you sure you want to continue?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="btn btn-secondary" onClick={deleteCard}>
+                    <Button variant="btn btn-danger" onClick={deleteCard}>
                         Yes
                     </Button>
                     <Button variant="btn btn-outline-secondary" onClick={handleClose}>

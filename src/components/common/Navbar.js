@@ -26,7 +26,7 @@ export const Navbar = () => {
                         to="/collections"
                     >
                         Collection
-                        
+
                     </NavLink>
 
 
@@ -35,6 +35,15 @@ export const Navbar = () => {
                         to="/filters"
                     >
                         Filters
+
+                    </NavLink>
+
+
+                    <NavLink
+                        className={({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '')}
+                        to="/add"
+                    >
+                        Add
 
                     </NavLink>
 

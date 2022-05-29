@@ -123,12 +123,19 @@ export const PendulumCardDetail = ({ card }) => {
                                                 }
                                             })()
 
-                                        }                                        <span className='m-2'>{rarity}</span>
+                                        }                                      
+                                        <span className='m-2'>{rarity}</span>
                                     </div>
-                                    <div className='col-sm-4'>
-                                        <span className='m-2'><strong>Set Name:</strong></span><br />
-                                        <span className='m-2'>{set_name}</span>
-                                    </div>
+
+                                    {
+                                        (set_name !== "")
+                                        &&
+                                        (<div className='col-sm-4'>
+                                            <span className='m-2'><strong>Set Name:</strong></span><br />
+                                            <span className='m-2'>{set_name}</span>
+                                        </div>)
+                                    }
+
                                     <div className='col-sm-4'>
                                         {
                                             (() => {
