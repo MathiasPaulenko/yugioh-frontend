@@ -29,9 +29,11 @@ export const UpdateCard = () => {
     const type = cardData.type;
     const subtype = cardData.subtype;
     const size = "col-sm-4"
+    let btnColor = "rgb(46, 49, 52)";
 
     if (cardData && (Object.keys(bodyRequest).length === 0)) {
         setBodyRequest(cardData);
+
     }
 
     const [isSendRequest, setIsSendRequest] = useState(false);
@@ -74,8 +76,6 @@ export const UpdateCard = () => {
     const handleAddCard = (e) => {
         e.preventDefault();
         let newLinksMarkers = [];
-        // seteamos los nuevos valores que no estén vacios y lo introducimos
-        // en los inputs en el bodyRequest. Funciona
         for (let i = 0; i < e.target.length; i++) {
             if (e.target[i].value !== '') {
                 if (e.target[i].name === 'link_markers') {
@@ -98,7 +98,6 @@ export const UpdateCard = () => {
 
         }
 
-        // Arreglamos valores de la carta por defecto de los Select Input
         selectFields.forEach(element => {
             if (bodyRequest[element] === '') {
                 setBodyRequest((prevState) => ({
@@ -164,9 +163,12 @@ export const UpdateCard = () => {
                             </div>
 
                             <div className="row m-6 mt-3 animate__animated animate__fadeInLeft" >
-                                <div className="col-sm-2 mt-2">
+                                <div className="col-sm-2 mt-2 zoom-effect-1-1">
                                     <div className="card card-block border-0">
-                                        <img className="card-img-top" src={`${LARGE_IMG_URL + cardData.img_code + IMG_EXT}`} alt={`Card ${serial_code}`}></img>
+                                        <a className="shadow-black zoom-effect-1-1" href={`/card/${serial_code}`} >
+                                            <img className="card-img-top" src={`${LARGE_IMG_URL + cardData.img_code + IMG_EXT}`} alt={`Card ${serial_code}`}></img>
+                                        </a>
+
                                     </div>
 
                                 </div>
@@ -192,6 +194,9 @@ export const UpdateCard = () => {
                                                             <InputField size={size} type="text" info="Edition" value={data.edition} />
                                                             <InputField size={size} type="text" info="Set Name" value={data.set_name} />
                                                             <InputField size={size} req={true} type="number" info="Amount" autoComplete="on" value={data.amount} />
+                                                            <InputField size={size} type="text" info="Format" value={data.format} />
+                                                            <InputField size={size} type="text" info="Note" value={data.note} />
+                                                            <InputField size={size} type="text" info="Banned" value={data.banned} />
 
                                                             <div className="col-sm-4 mt-2 mb-2">
                                                                 <button
@@ -234,14 +239,17 @@ export const UpdateCard = () => {
                                                             <InputField size={size} type="text" info="Edition" value={data.edition} />
                                                             <InputField size={size} type="text" info="Set Name" value={data.set_name} />
                                                             <InputField size={size} req={true} type="number" info="Amount" autoComplete="on" value={data.amount} />
-
+                                                            <InputField size={size} type="text" info="Format" value={data.format} />
+                                                            <InputField size={size} type="text" info="Note" value={data.note} />
+                                                            <InputField size={size} type="text" info="Banned" value={data.banned} />
+                                                            
                                                             <div className="col-sm-4 mt-2 mb-2"></div>
 
                                                             <div className="col-sm-4 mt-2 mb-2">
                                                                 <button
                                                                     className="btn form-control"
                                                                     style={{
-                                                                        background: "#ab1f78",
+                                                                        background: "linear-gradient(to right, rgb(171, 31, 120), rgb(116 14 79), rgb(7 54 46), rgb(4, 142, 119))",
                                                                         color: 'white'
                                                                     }}
                                                                     type="submit"
@@ -285,7 +293,11 @@ export const UpdateCard = () => {
                                                                 <InputField size={size} type="text" info="Edition" value={data.edition} />
                                                                 <InputField size={size} type="text" info="Set Name" value={data.set_name} />
                                                                 <InputField size={size} req={true} type="number" info="Amount" autoComplete="on" value={data.amount} />
-                                                                <div className="col-sm-3 mt-2 mb-2"></div>
+                                                                <InputField size={size} type="text" info="Format" value={data.format} />
+                                                                <InputField size={size} type="text" info="Note" value={data.note} />
+                                                                <InputField size={size} type="text" info="Banned" value={data.banned} />
+                                                                
+                                                                <div className="col-sm-4 mt-2 mb-2"></div>
 
                                                                 <div className="col-sm-4 mt-2 mb-2">
                                                                     <button
@@ -331,6 +343,11 @@ export const UpdateCard = () => {
                                                                 <InputField size={size} type="text" info="Edition" value={data.edition} />
                                                                 <InputField size={size} type="text" info="Set Name" value={data.set_name} />
                                                                 <InputField size={size} req={false} type="number" info="Amount" autoComplete="on" value={data.amount} />
+                                                                <InputField size={size} type="text" info="Format" value={data.format} />
+                                                                <InputField size={size} type="text" info="Note" value={data.note} />
+                                                                <InputField size={size} type="text" info="Banned" value={data.banned} />
+
+                                                                <div className="col-sm-4 mt-2 mb-2"></div>
 
                                                                 <div className="col-sm-4 mt-2 mb-2">
                                                                     <button
@@ -358,6 +375,25 @@ export const UpdateCard = () => {
                                                         </form>
                                                     )
                                                 } else {
+
+                                                    if (data.subtype.includes("Fusion")) {
+                                                        btnColor = "rgb(126, 40, 141)"
+                                                    } else if (data.subtype.includes("Synchro")) {
+                                                        btnColor = "rgb(112, 103, 86)"
+                                                    } else if (data.subtype.includes("XYZ")) {
+                                                        btnColor = "rgb(46, 49, 52)"
+                                                    } else if (data.subtype.includes("Token")) {
+                                                        btnColor = "rgb(64, 62, 66)"
+                                                    } else if (data.subtype.includes("Ritual")) {
+                                                        btnColor = "rgb(77, 118, 186)"
+                                                    } else if (data.subtype.includes("Normal")) {
+                                                        btnColor = "rgb(192 145 68)"
+                                                    } else if (data.subtype.includes("Effect")) {
+                                                        btnColor = "rgb(193 116 70)"
+                                                    } else {
+                                                        btnColor = "rgb(46, 49, 52)"
+                                                    }
+
                                                     return (
                                                         <form className="" onSubmit={handleAddCard}>
                                                             <div className="row ">
@@ -377,12 +413,15 @@ export const UpdateCard = () => {
                                                                 <InputField size={size} type="text" info="Edition" value={data.edition} />
                                                                 <InputField size={size} type="text" info="Set Name" value={data.set_name} />
                                                                 <InputField size={size} req={true} type="number" info="Amount" autoComplete="on" value={data.amount} />
+                                                                <InputField size={size} type="text" info="Format" value={data.format} />
+                                                                <InputField size={size} type="text" info="Note" value={data.note} />
+                                                                <InputField size={size} type="text" info="Banned" value={data.banned} />
 
                                                                 <div className="col-sm-4 mt-2 mb-2">
                                                                     <button
                                                                         className="btn form-control"
                                                                         style={{
-                                                                            background: "#be6d3e",
+                                                                            background: btnColor,
                                                                             color: 'white'
                                                                         }}
                                                                         type="submit"
