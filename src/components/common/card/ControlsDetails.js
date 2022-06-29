@@ -28,7 +28,7 @@ export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
             );
 
     }
-    
+
     const handleUpdate = () => {
         navigate(`/card/update/${serial_code}`);
     };
@@ -102,3 +102,41 @@ export const ConstrolsButtonsCardDetail = ({ serial_code }) => {
         </>
     )
 };
+
+export const SetAndPriceButtons = ({ set_name, name }) => {
+    const navigate = useNavigate();
+
+    const handleCardSet = () => {
+        navigate(`/cardset?q=${set_name.replace("&", "%26")}`);
+    };
+
+    const handlePrice = () => {
+        navigate(`/prices?q=${name.replace("&", "%26")}`);
+    };
+
+    return (
+        <div className='container fixed-bottom'>
+            <div className='row mb-3'>
+                <div className='col-sm-12 align-right'>
+
+                    <button
+                        type="button"
+                        className="btn btn-outline-secondary m-2"
+                        onClick={handleCardSet}
+                    >
+                        Go to Card Set
+                    </button>
+
+                    <button
+                        type="button"
+                        className="btn btn-outline-secondary m-2"
+                        onClick={handlePrice}
+                    >
+                        Got to Prices
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}

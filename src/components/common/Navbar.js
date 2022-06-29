@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavDropdown } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom'
 
 
@@ -18,8 +19,16 @@ export const Navbar = () => {
 
             </Link>
 
-            <div className="navbar-collapse">
+            <div className="collapse navbar-collapse">
                 <div className="navbar-nav">
+
+                    <NavLink
+                        className={({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '')}
+                        to="/dashboard"
+                    >
+                        Dashboard
+
+                    </NavLink>
 
                     <NavLink
                         className={({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '')}
@@ -46,6 +55,28 @@ export const Navbar = () => {
                         Add
 
                     </NavLink>
+
+                    <NavDropdown title="Cards" menuVariant="dark">
+                        <NavDropdown.Item href="/repeated">Repeated</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="/banlist">Banlist</NavDropdown.Item>
+                        <NavDropdown.Item href="/staples">Staples Cards</NavDropdown.Item>
+                        <NavDropdown.Item href="/archetypes_list">Archetypes List</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="/search_card">Search Card</NavDropdown.Item>
+                    </NavDropdown>
+
+                    <NavDropdown title="CardSet" menuVariant="dark">
+                        <NavDropdown.Item href="/cardset">Cardset Collection</NavDropdown.Item>
+                        <NavDropdown.Item href="/prices">Card Prices</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="/cardsetlist">
+                            Cardset List
+                        </NavDropdown.Item>
+                    </NavDropdown>
+
+
+
 
                 </div>
             </div>

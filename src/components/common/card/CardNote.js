@@ -3,15 +3,15 @@ import { parsedDescription } from '../../../helpers/utils.js';
 
 import "../../../statics/css/main.css"
 
-export const CardDescriptionDetail = ({ description }) => {
+export const CardNote = ({ note }) => {
 
-    const descr_formated = parsedDescription(description);
+    const descr_formated = parsedDescription(note);
 
     return (
         <>
             <div className="row card-body mt-5 mb-5 animate__animated animate__fadeInRight shadow rounded" >
                 <div className="col-sm-12 m-2">
-                    <h5 className='mb-3'>Description:</h5>
+                    <h5 className='mb-3'>Addictional Note:</h5>
                     <hr />
                     <div className='card-text new-line'>
                         {

@@ -1,21 +1,26 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export const SearchCard = ({
     value,
     handle,
+    resetValue,
+    placeholder,
 }) => {
 
     const navigate = useNavigate();
     const { searchText } = value;
-   
+    const inputRef = useRef(null);
+
     const handleSearch = (e) => {
         e.preventDefault();
         navigate(`?q=${searchText}`);
     };
 
-    const handleReset = () => {
-        navigate('/');
+    const handleReset = (e) => {
+        e.preventDefault();
+        inputRef.current.value = "";
+        navigate({resetValue});
     };
 
     return (
@@ -24,13 +29,14 @@ export const SearchCard = ({
                 <div className="col-sm-8">
                     <input
                         type="text"
-                        placeholder="Card Name"
+                        placeholder={placeholder}
                         className="form-control"
                         name="searchText"
                         id="searchText"
                         autoComplete="off"
                         value={searchText}
                         onChange={handle}
+                        ref={inputRef}
                     />
                 </div>
                 <div className="col-sm-2">

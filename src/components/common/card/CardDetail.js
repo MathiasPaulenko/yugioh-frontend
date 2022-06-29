@@ -11,6 +11,7 @@ import { ConstrolsButtonsCardDetail } from './ControlsDetails.js';
 
 import "../../../statics/css/main.css";
 import { RelatedCards } from './RelatedCards.js';
+import { CardNote } from './CardNote.js';
 
 
 export const CardDetail = ({ card }) => {
@@ -24,7 +25,8 @@ export const CardDetail = ({ card }) => {
         description,
         type,
         subtype,
-        archetype="",
+        archetype = "",
+        note
     } = card;
 
     return (
@@ -36,11 +38,14 @@ export const CardDetail = ({ card }) => {
 
                     } else if (type.toLowerCase() === 'spell' || type.toLowerCase() === 'trap') {
                         return <SpellTrapCardDetail card={card}></SpellTrapCardDetail>
+                    
                     } else {
                         if (subtype.toLowerCase().includes("pendulum")) {
                             return <PendulumCardDetail card={card}></PendulumCardDetail>
+                       
                         } else if (subtype.toLowerCase().includes("link")) {
                             return <LinkCardDetail card={card}></LinkCardDetail>
+                       
                         } else {
                             return <MonsterCardDetail card={card}></MonsterCardDetail>
                         }
@@ -50,18 +55,26 @@ export const CardDetail = ({ card }) => {
 
             <CardDescriptionDetail description={description} />
 
+            {
+                (note && note !== "")
+                &&
+                (
+                    <CardNote note={note} />
+                )
+            }
+            
             <ConstrolsButtonsCardDetail serial_code={serial_code} />
 
             {
                 (() => {
-                    if(archetype && (archetype !== "")){
+                    if (archetype && (archetype !== "")) {
                         return <RelatedCards archetype={archetype} />
 
-                    } else if(type && (type !== "")){
-                  
+                    } else if (type && (type !== "")) {
+
                         return <RelatedCards cardType={type} cardSubtype={subtype} title='Card of the same type in the collection' />
 
-                    }else {
+                    } else {
                         return <div></div>
                     }
 

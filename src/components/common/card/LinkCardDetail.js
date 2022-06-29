@@ -3,6 +3,7 @@ import { LARGE_IMG_URL, IMG_EXT } from '../../../helpers/constants.js';
 import { getRarityIconOrNot } from '../../../helpers/utils.js';
 
 import "../../../statics/css/main.css"
+import { SetAndPriceButtons } from './ControlsDetails.js';
 
 export const LinkCardDetail = ({ card }) => {
     const {
@@ -19,8 +20,10 @@ export const LinkCardDetail = ({ card }) => {
         attack,
         attribute,
         link_value,
-        link_markers
-
+        link_markers,
+        name,
+        format,
+        banned
     } = card;
 
     const imgSubtype = `/assets/img/type/${subtype}.jpg`;
@@ -36,8 +39,23 @@ export const LinkCardDetail = ({ card }) => {
         <>
             <div className="row m-6 mt-3 animate__animated animate__fadeInLeft shadow rounded" >
 
-                <div className="col-sm-3 p-0">
+                <div className="col-sm-3 p-0 zoom-effect-1-3">
                     <div className="card card-block border-0">
+                        {
+                            (
+                                (() => {
+                                    if (banned) {
+                                        return (
+                                            <img
+                                                className='float-ban-img'
+                                                alt={banned}
+                                                src={`/assets/img/ban/${banned}.svg`}
+                                            />
+                                        )
+                                    }
+                                })()
+                            )
+                        }
                         <img className="card-img-top" src={`${LARGE_IMG_URL + img_code + IMG_EXT}`} alt={`Card ${serial_code}`}></img>
                     </div>
 
@@ -62,20 +80,26 @@ export const LinkCardDetail = ({ card }) => {
                             <div className='container'>
 
                                 <div className='row align-items-center text-center'>
-                                    <div className='col-sm-4'>
+                                    <div className='col-sm-4 details-link'>
                                         <span className='m-2'><strong>Type:</strong></span>
                                         <span className='m-2 type-icon-15'><img className="" src={imgSubtype} alt='subtype'></img></span><br />
-                                        <span className='m-2'>{subtype}</span>
+                                        <a className="" href={`/filters?subtype=${subtype}`}>
+                                            <span className='m-2'>{subtype}</span>
+                                        </a>
                                     </div>
-                                    <div className='col-sm-4'>
+                                    <div className='col-sm-4 details-link'>
                                         <span className='m-2'><strong>Race:</strong></span>
                                         <span className='m-2 type-icon-10'><img className="" src={imgRace} alt={race}></img></span>
-                                        <span className='m-2'>{race}</span>
+                                        <a className="" href={`/filters?race=${race}`}>
+                                            <span className='m-2'>{race}</span>
+                                        </a>
                                     </div>
-                                    <div className='col-sm-4'>
+                                    <div className='col-sm-4 details-link'>
                                         <span className='m-2'><strong>Attribute:</strong></span>
                                         <span className='m-2 type-icon-10'><img className="" src={imgAttribute} alt={attribute}></img></span>
-                                        <span className='m-2'>{attribute}</span>
+                                        <a className="" href={`/filters?attribute=${attribute}`}>
+                                            <span className='m-2'>{attribute}</span>
+                                        </a>
                                     </div>
 
                                 </div>
@@ -101,7 +125,7 @@ export const LinkCardDetail = ({ card }) => {
                                 <hr />
 
                                 <div className='row align-items-center text-center'>
-                                    <div className='col-sm-4'>
+                                    <div className='col-sm-4 details-link'>
                                         <span className='m-2'><strong>Rarity:</strong></span>
                                         {
                                             (() => {
@@ -116,7 +140,11 @@ export const LinkCardDetail = ({ card }) => {
                                             })()
 
                                         }
-                                        <span className='m-2'>{rarity}</span>
+
+                                        <a className="" href={`/filters?rarity=${rarity}`}>
+                                            <span className='m-2'>{rarity}</span>
+                                        </a>
+
                                     </div>
 
                                     {
@@ -127,7 +155,7 @@ export const LinkCardDetail = ({ card }) => {
                                             <span className='m-2'>{set_name}</span>
                                         </div>)
                                     }
-                                    
+
                                     <div className='col-sm-4'>
                                         {
                                             (() => {
@@ -148,22 +176,37 @@ export const LinkCardDetail = ({ card }) => {
                                 <hr />
 
                                 <div className='row align-items-center text-center'>
-                                    <div className='col-sm-4'>
+                                    <div className='col-sm-4 details-link'>
                                         <span className='m-2'><strong>Archetype:</strong></span>
-                                        <span className='m-2'>{arch}</span>
+                                        <a className="" href={`/filters?archetype=${arch}`}>
+                                            <span className='m-2'>{arch}</span>
+                                        </a>
                                     </div>
-                                    <div className='col-sm-4'>
-
+                                    <div className='col-sm-4 details-link'>
+                                        {
+                                            (format && format !== "")
+                                            &&
+                                            (
+                                                <>
+                                                    <span className='m-2'><strong>Format:</strong></span><br />
+                                                    <a className="" href={`/filters?game_format=${format}`}>
+                                                        <span className='m-2'>{format}</span>
+                                                    </a>
+                                                </>
+                                            )
+                                        }
                                     </div>
                                     <div className='col-sm-4'>
                                         <span className='m-2'><strong>Amount:</strong></span>
-                                        <span className='m-2'>{amount}</span>
+                                        <span className='m-2 h5 text-secondary'>{amount}</span>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                     </div>
+
+                    <SetAndPriceButtons set_name={set_name} name={name} />
 
                 </div>
             </div>
