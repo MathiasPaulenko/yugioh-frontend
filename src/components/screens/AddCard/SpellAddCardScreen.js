@@ -120,9 +120,10 @@ export const SpellAddCardScreen = () => {
                     <InputField type="text" info="Edition" />
                     <InputField type="text" info="Set Name" />
                     <InputField req={true} type="number" info="Amount" autoComplete="on" />
-                    
-                    <div className="col-sm-3 mt-2 mb-2"></div>
-                    
+                    <InputField type="text" info="Format" />
+                    <InputField type="text" info="Note" />
+                    <InputField type="text" info="Banned" />
+
                     <div className="col-sm-3 mt-2 mb-2">
                         <button
                             className="btn form-control"
@@ -155,10 +156,10 @@ export const SpellAddCardScreen = () => {
                 <Modal.Body>Do you want to go to the detail of the card or add another?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="btn btn-secondary" onClick={handleAddAnotherCard}>
-                        Add another card
+                        Add Another Card
                     </Button>
                     <Button variant="btn btn-outline-secondary" onClick={handleGoDetail}>
-                        Go to the detail
+                        Go to the Detail
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -183,4 +184,6 @@ export const spellBodyRequest = {
     edition: "",
     set_name: "",
     amount: 0,
+    format: "",
+    note: ""
 }

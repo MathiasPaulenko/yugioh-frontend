@@ -126,6 +126,11 @@ export const PendulumAddCardScreen = () => {
                     <InputField type="text" info="Edition" />
                     <InputField type="text" info="Set Name" />
                     <InputField req={true} type="number" info="Amount" autoComplete="on" />
+                    <InputField type="text" info="Format" />
+                    <InputField type="text" info="Note" />
+                    <InputField type="text" info="Banned" />
+
+                    <div className="col-sm-3 mt-2 mb-2"></div>
                     <div className="col-sm-3 mt-2 mb-2"></div>
 
                     <div className="col-sm-3 mt-2 mb-2">
@@ -160,10 +165,10 @@ export const PendulumAddCardScreen = () => {
                 <Modal.Body>Do you want to go to the detail of the card or add another?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="btn btn-secondary" onClick={handleAddAnotherCard}>
-                        Add another card
+                        Add Another Card
                     </Button>
                     <Button variant="btn btn-outline-secondary" onClick={handleGoDetail}>
-                        Go to the detail
+                        Go to the Detail
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -194,4 +199,6 @@ export const pendulumBodyRequest = {
     set_name: "",
     img_code: "",
     amount: 0,
+    format: "",
+    note: ""
 }

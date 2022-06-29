@@ -1,3 +1,4 @@
+import React from 'react';
 import { Title } from "../../common/Title";
 import "../../../statics/css/main.css"
 import { TypeCard } from "../../common/add/TypeCard";
@@ -19,6 +20,7 @@ export const AddCardScreen = () => {
                     <ReturnButton value="Return" />
                 </div>
             </div>
+            <hr />
 
             <div className="row mt-2 align-items-center text-center">
                 <TypeCard background_image='normal.jpg' card_image='Effect Monster' type='Normal/Effect Monster Card' page='normal' />
