@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Routes, Route } from 'react-router-dom';
 
 import { Navbar } from '../components/common/Navbar';
@@ -18,6 +20,17 @@ import { SkillAddCardScreen } from '../components/screens/AddCard/SkillAddCardSc
 import { RitualAddCardScreen } from '../components/screens/AddCard/RitualAddCardScreen';
 import { PendulumAddCardScreen } from '../components/screens/AddCard/PendulumAddCardScreen';
 import { UpdateCard } from '../components/screens/UpdateCard';
+import { Dashboard } from '../components/screens/Dashboard';
+import { Repeated } from '../components/screens/Repeated';
+import { PricesScreen } from '../components/screens/PricesScreen';
+import { Footer } from '../components/common/Footer';
+import { CardSetScreen } from '../components/screens/CardSetScreen';
+import ScrollTopArrow from '../components/common/ScrollTopArrow';
+import { BanlistScreen } from '../components/screens/BanlistScreen';
+import { StapleScreen } from '../components/screens/StapleScreen';
+import { CardSetListscreen } from '../components/screens/CardSetListscreen';
+import { SearchCardScreen } from '../components/screens/SearchCardScreen';
+import { ArchetypesListScreen } from '../components/screens/ArchetypesListScreen';
 
 export const MainRoutes = () => {
 
@@ -30,10 +43,20 @@ export const MainRoutes = () => {
 
                     <Route path="/" element={<CollectionsScreen />} />
                     <Route path="/collections" element={<CollectionsScreen />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/filters" element={<FiltersScreen />} />
                     <Route path="card/:serial_code" element={<CardScreen />} />
                     <Route path="card/update/:serial_code" element={<UpdateCard />} />
-                    
+                    <Route path="/repeated" element={<Repeated />} />
+                    <Route path="/prices" element={<PricesScreen />} />
+                    <Route path="/cardset" element={<CardSetScreen />} />
+
+                    <Route path="/banlist" element={<BanlistScreen />} />
+                    <Route path="/staples" element={<StapleScreen />} />
+                    <Route path="/cardsetlist" element={<CardSetListscreen />} />
+                    <Route path="/search_card" element={<SearchCardScreen />} />
+                    <Route path="/archetypes_list" element={<ArchetypesListScreen />} />
+
                     <Route path="/add" element={<AddCardScreen />} />
                     <Route path="/add/normal" element={<NormalAddCardScreen />} />
                     <Route path="/add/fusion" element={<FusionAddCardScreen />} />
@@ -49,6 +72,10 @@ export const MainRoutes = () => {
 
                 </Routes>
             </div>
+
+            <ScrollTopArrow />
+
+            <Footer />
         </>
     )
 }
