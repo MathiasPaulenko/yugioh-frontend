@@ -9,7 +9,6 @@ export const useFilterCard = (url, filters) => {
     } 
    
     url += queries;
-
     const isMounted = useRef(true);
     const [state, setState] = useState({ data: null, loading: true, error: null });
 
