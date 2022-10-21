@@ -19,11 +19,14 @@ export const SkillCardDetail = ({ card }) => {
         amount,
         name,
         format,
-        banned
+        banned,
+        language
     } = card;
 
     const imgSubtype = `/assets/img/type/${subtype}.jpg`;
     const imgRarity = getRarityIconOrNot(rarity);
+    const imgLaguage = `/assets/img/flags/${language}.webp`;
+
 
     return (
         <>
@@ -54,9 +57,9 @@ export const SkillCardDetail = ({ card }) => {
                 <div className="col-sm-9">
                     <div className="p-3 container">
                         <div className='row'>
-                            <div className='col-sm-4'>
-                                <h5 className='col-sm-3'>Details:</h5>
-                            </div>
+                            <span className='col-sm-4'><strong>Language: </strong>
+                                <span className='m-2 type-icon-8'><img className="" src={imgLaguage} alt='Language'></img></span>
+                            </span>
                             <div className='col-sm-4 align-right'>
                                 <span><strong>Card Number:</strong> {card_number}</span>
                             </div>

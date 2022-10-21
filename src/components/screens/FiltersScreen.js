@@ -63,9 +63,8 @@ export const FiltersScreen = () => {
                     <InputField type="number" info="Gamount" autoComplete="off" /> */}
                     <InputField type="text" info="Game Format" />
                     <InputField type="text" info="Banned" />
+                    <InputField type="text" info="Language" />
                     
-                    <div className="col-sm-3 mt-2 mb-2"></div>
-
                     <div className="col-sm-3 mt-2 mb-2">
                         <button
                             className="btn btn-secondary form-control"

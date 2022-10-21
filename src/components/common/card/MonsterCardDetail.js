@@ -23,13 +23,15 @@ export const MonsterCardDetail = ({ card }) => {
         attribute,
         name,
         format,
-        banned
+        banned,
+        language
     } = card;
 
     const imgSubtype = `/assets/img/type/${subtype}.jpg`;
     const imgRace = `/assets/img/monster_race/${race}.png`;
     const imgRarity = getRarityIconOrNot(rarity);
     const imgAttribute = `/assets/img/attribute/${attribute.toUpperCase()}.jpg`;
+    const imgLaguage = `/assets/img/flags/${language}.webp`;
 
     const imgLevel = subtype.toLowerCase().includes("xyz") ? `/assets/img/common/rank.png` : `/assets/img/common/level.png`
 
@@ -64,7 +66,9 @@ export const MonsterCardDetail = ({ card }) => {
                     <div className="p-3 container">
                         <div className='row'>
                             <div className='col-sm-4'>
-                                <h5 className='col-sm-3'>Details:</h5>
+                                <span className='col-sm-4'><strong>Language: </strong>
+                                    <span className='m-2 type-icon-8'><img className="" src={imgLaguage} alt='Language'></img></span>
+                                </span>
                             </div>
                             <div className='col-sm-4 align-right'>
                                 <span><strong>Card Number:</strong> {card_number}</span>

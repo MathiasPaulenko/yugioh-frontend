@@ -47,6 +47,10 @@ body {
     width: 12%;
 }
 
+.type-icon-8 img {
+    width: 8%;
+}
+
 .card_button {
     min-width: 120px !important;
     max-width: 120px !important;

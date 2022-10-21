@@ -21,7 +21,8 @@ export const SpellTrapCardDetail = ({ card }) => {
         archetype,
         name,
         format,
-        banned
+        banned,
+        language,
     } = card;
 
 
@@ -29,7 +30,7 @@ export const SpellTrapCardDetail = ({ card }) => {
     const imgRace = `/assets/img/other_race/${race}.png`;
     const imgRarity = getRarityIconOrNot(rarity);
     const imgAttribute = `/assets/img/attribute/${type.toUpperCase()}.png`;
-
+    const imgLaguage = `/assets/img/flags/${language}.webp`;
     const arch = archetype || "None"
 
 
@@ -64,9 +65,11 @@ export const SpellTrapCardDetail = ({ card }) => {
                     <div className="p-3 container">
                         <div className='row'>
                             <div className='col-sm-4'>
-                                <h5 className='col-sm-3'>Details:</h5>
+                                <span className='col-sm-4'><strong>Language: </strong>
+                                    <span className='m-2 type-icon-8'><img className="" src={imgLaguage} alt='Language'></img></span>
+                                </span>
                             </div>
-                            <div className='col-sm-4 align-right'>
+                            <div className='col-sm-4 text-center'>
                                 <span><strong>Card Number:</strong> {card_number}</span>
                             </div>
                             <div className='col-sm-4 align-right'>

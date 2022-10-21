@@ -24,13 +24,15 @@ export const PendulumCardDetail = ({ card }) => {
         scale,
         name,
         format,
-        banned
+        banned,
+        language
     } = card;
 
     const imgSubtype = `/assets/img/type/${subtype}.jpg`;
     const imgRace = `/assets/img/monster_race/${race}.png`;
     const imgRarity = getRarityIconOrNot(rarity);
     const imgAttribute = `/assets/img/attribute/${attribute.toUpperCase()}.jpg`;
+    const imgLaguage = `/assets/img/flags/${language}.webp`;
 
 
 
@@ -68,7 +70,9 @@ export const PendulumCardDetail = ({ card }) => {
                     <div className="p-3 container">
                         <div className='row'>
                             <div className='col-sm-4'>
-                                <h5 className='col-sm-3'>Details:</h5>
+                                <span className='col-sm-4'><strong>Language: </strong>
+                                    <span className='m-2 type-icon-8'><img className="" src={imgLaguage} alt='Language'></img></span>
+                                </span>
                             </div>
                             <div className='col-sm-4 align-right'>
                                 <span><strong>Card Number:</strong> {card_number}</span>

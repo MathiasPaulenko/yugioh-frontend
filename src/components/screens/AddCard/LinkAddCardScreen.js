@@ -139,6 +139,9 @@ export const LinkAddCardScreen = () => {
                     <InputField type="text" info="Format" />
                     <InputField type="text" info="Note" />
                     <InputField type="text" info="Banned" />
+                    <InputField type="text" info="Language" />
+
+                    <div className="col-sm-3 mt-2 mb-2"></div>
 
                     <div className="col-sm-3 mt-2 mb-2">
                         <button
